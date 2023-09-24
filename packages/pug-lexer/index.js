@@ -345,6 +345,8 @@ Lexer.prototype = {
 
   /**
    * Comment.
+   * Если поставить два слеша ('//'), то комментарий не отобразится в html верстке.
+   * Если поставить два слеша и дифис ('//-'), то комментарий отобразится в html верстке.
    */
 
   comment: function() {
@@ -352,7 +354,7 @@ Lexer.prototype = {
     if ((captures = /^\/\/(-)?([^\n]*)/.exec(this.input))) {
       this.consume(captures[0].length);
       var tok = this.tok('comment', captures[2]);
-      tok.buffer = '-' != captures[1];
+      tok.buffer = '-' === captures[1];
       this.interpolationAllowed = tok.buffer;
       this.tokens.push(tok);
       this.incrementColumn(captures[0].length);
