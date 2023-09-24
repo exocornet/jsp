@@ -582,7 +582,7 @@
   * Added `client` option to reference runtime helpers
   * Added `Array.isArray()` for runtime.js as well
   * Added `Object.keys()` for the client-side runtime
-  * Added first-class `if`, `unless`, `else` and `else if` support
+  * Added first-class `if`, `else` and `else if` support
   * Added first-class `each` / `for` support
   * Added `make benchmark` for continuous-bench
   * Removed `inline` option, SS helpers are no longer inlined either

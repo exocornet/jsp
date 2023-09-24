@@ -668,6 +668,7 @@ Lexer.prototype = {
    */
 
   dot: function() {
+    // console.log('dot dot dot dot')
     var tok;
     if ((tok = this.scanEndOfLine(/^\./, 'dot'))) {
       this.tokens.push(this.tokEnd(tok));
@@ -983,7 +984,7 @@ Lexer.prototype = {
 
   conditional: function() {
     var captures;
-    if ((captures = /^(if|unless|else if|else)\b([^\n]*)/.exec(this.input))) {
+    if ((captures = /^(if|else if|else)\b([^\n]*)/.exec(this.input))) {
       this.consume(captures[0].length);
       var type = captures[1].replace(/ /g, '-');
       var js = captures[2] && captures[2].trim();
@@ -995,11 +996,6 @@ Lexer.prototype = {
         case 'if':
         case 'else-if':
           this.assertExpression(js);
-          break;
-        case 'unless':
-          this.assertExpression(js);
-          tok.val = '!(' + js + ')';
-          tok.type = 'if';
           break;
         case 'else':
           if (js) {

@@ -1,15 +1,18 @@
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-var walk = require('pug-walk');
-var assign = require('object-assign');
+const fs = require('fs'),
+  path = require('path'),
+  walk = require('pug-walk'),
+  assign = require('object-assign');
 
 module.exports = load;
+
 function load(ast, options) {
   options = getOptions(options);
+
   // clone the ast
   ast = JSON.parse(JSON.stringify(ast));
+
   return walk(ast, function(node) {
     if (node.str === undefined) {
       if (

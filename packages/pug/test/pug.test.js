@@ -1023,24 +1023,6 @@ describe('pug', function() {
       );
     });
 
-    it('should support unless', function() {
-      var str = [
-        '- var users = ["tobi", "loki", "jane"]',
-        'unless users.length',
-        '  p no users',
-      ].join('\n');
-
-      assert.equal('', pug.render(str));
-
-      var str = [
-        '- var users = []',
-        'unless users.length',
-        '  p no users',
-      ].join('\n');
-
-      assert.equal('<p>no users</p>', pug.render(str));
-    });
-
     it('should support else', function() {
       var str = [
         '- var users = []',

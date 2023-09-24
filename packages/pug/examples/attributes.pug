@@ -1,4 +1,17 @@
-div#id.left.container(class='user user-' + name)
+.
+  // syntax native HTML
+  <div id="id" class="#{'left container user user-' + `${name || ''}`}">
+    <h1 class="title">#{name}</h1>
+    <form>
+      //- unbuffered comment :)
+      // An example of attributes.
+      <input type="text" name="user[name]" value="#{name}">
+      <input checked type="checkbox" name="user[blocked]">
+      <input type="submit" value="Update">
+    </form>
+  </div>
+
+div#id.left.container(class='user user-' + `${name || ''}` )
   h1.title= name
   form
     //- unbuffered comment :)
