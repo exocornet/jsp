@@ -28941,7 +28941,7 @@ Object {
   "code": "PUG:MALFORMED_EACH",
   "column": 5,
   "line": 1,
-  "msg": "This \`each\` has a syntax error. \`each\` statements should be of the form: \`each VARIABLE_NAME of JS_EXPRESSION\`",
+  "msg": "This \`for\` has a syntax error. \`for\` statements should be of the form: \`for VARIABLE_NAME of JS_EXPRESSION\`",
 }
 `;
 

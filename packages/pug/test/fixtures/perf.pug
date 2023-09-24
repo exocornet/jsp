@@ -1,6 +1,6 @@
 .data
   ol.sortable#contents
-    each item in report
+    for item in report
       if (!item.parent)
         div
           li.chapter(data-ref= item.id)
@@ -8,7 +8,7 @@
               = item.name
           - var chp = item.id
             ol.sortable
-              each item in report
+              for item in report
                 if (item.parent === chp && item.type === 'section')
                   div
                     li.section(data-ref= item.id)
@@ -16,7 +16,7 @@
                         = item.name
                     - var sec = item.id
                       ol.sortable
-                        each item in report
+                        for item in report
                           if (item.parent === sec && item.type === 'page')
                             div
                               li.page(data-ref= item.id)
@@ -24,7 +24,7 @@
                                   = item.name
                               - var page = item.id
                                 ol.sortable
-                                  each item in report
+                                  for item in report
                                     if (item.parent === page && item.type === 'subpage')
                                       div
                                         li.subpage(data-ref= item.id)

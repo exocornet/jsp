@@ -916,7 +916,7 @@ describe('pug', function() {
       // Array
       var str = [
         '- var items = ["one", "two", "three"];',
-        'each item in items',
+        'for item in items',
         '  li= item',
       ].join('\n');
 
@@ -927,7 +927,7 @@ describe('pug', function() {
       // Any enumerable (length property)
       var str = [
         '- var jQuery = { length: 3, 0: 1, 1: 2, 2: 3 };',
-        'each item in jQuery',
+        'for item in jQuery',
         '  li= item',
       ].join('\n');
 
@@ -936,7 +936,7 @@ describe('pug', function() {
       assert.equal(html, pug.render(str));
 
       // Empty array
-      var str = ['- var items = [];', 'each item in items', '  li= item'].join(
+      var str = ['- var items = [];', 'for item in items', '  li= item'].join(
         '\n'
       );
 
@@ -945,7 +945,7 @@ describe('pug', function() {
       // Object
       var str = [
         '- var obj = { foo: "bar", baz: "raz" };',
-        'each val in obj',
+        'for val in obj',
         '  li= val',
       ].join('\n');
 
@@ -956,7 +956,7 @@ describe('pug', function() {
       // Complex
       var str = [
         '- var obj = { foo: "bar", baz: "raz" };',
-        'each key in Object.keys(obj)',
+        'for key in Object.keys(obj)',
         '  li= key',
       ].join('\n');
 
@@ -967,7 +967,7 @@ describe('pug', function() {
       // Keys
       var str = [
         '- var obj = { foo: "bar", baz: "raz" };',
-        'each val, key in obj',
+        'for val, key in obj',
         '  li #{key}: #{val}',
       ].join('\n');
 
@@ -978,8 +978,8 @@ describe('pug', function() {
       // Nested
       var str = [
         '- var users = [{ name: "tj" }]',
-        'each user in users',
-        '  each val, key in user',
+        'for user in users',
+        '  for val, key in user',
         '    li #{key} #{val}',
       ].join('\n');
 
@@ -989,7 +989,7 @@ describe('pug', function() {
 
       var str = [
         '- var users = ["tobi", "loki", "jane"]',
-        'each user in users',
+        'for user in users',
         '  li= user',
       ].join('\n');
 

@@ -670,7 +670,6 @@ Lexer.prototype = {
    */
 
   dot: function() {
-    // console.log('dot dot dot dot')
     var tok;
     if ((tok = this.scanEndOfLine(/^\./, 'dot'))) {
       this.tokens.push(this.tokEnd(tok));
@@ -970,7 +969,7 @@ Lexer.prototype = {
 
   mixin: function() {
     var captures;
-    if ((captures = /^mixin +([-\w]+)(?: *\((.*)\))? */.exec(this.input))) {
+    if ((captures = /^function +([-\w]+)(?: *\((.*)\))? */.exec(this.input))) {
       this.consume(captures[0].length);
       var tok = this.tok('mixin', captures[1]);
       tok.args = captures[2] || null;
@@ -1034,13 +1033,13 @@ Lexer.prototype = {
   },
 
   /**
-   * Each.
+   * For.
    */
 
   each: function() {
     var captures;
     if (
-      (captures = /^(?:each|for) +([a-zA-Z_$][\w$]*)(?: *, *([a-zA-Z_$][\w$]*))? * in *([^\n]+)/.exec(
+      (captures = /^for +([a-zA-Z_$][\w$]*)(?: *, *([a-zA-Z_$][\w$]*))? * in *([^\n]+)/.exec(
         this.input
       ))
     ) {
@@ -1054,8 +1053,8 @@ Lexer.prototype = {
       this.tokens.push(this.tokEnd(tok));
       return true;
     }
-    const name = /^each\b/.exec(this.input) ? 'each' : 'for';
-    if (this.scan(/^(?:each|for)\b/)) {
+    const name = /^for\b/.exec(this.input);
+    if (this.scan(/^for\b/)) {
       this.error(
         'MALFORMED_EACH',
         'This `' +
@@ -1068,7 +1067,7 @@ Lexer.prototype = {
       );
     }
     if (
-      (captures = /^- *(?:each|for) +([a-zA-Z_$][\w$]*)(?: *, *([a-zA-Z_$][\w$]*))? +in +([^\n]+)/.exec(
+      (captures = /^- *for +([a-zA-Z_$][\w$]*)(?: *, *([a-zA-Z_$][\w$]*))? +in +([^\n]+)/.exec(
         this.input
       ))
     ) {
@@ -1085,7 +1084,7 @@ Lexer.prototype = {
 
   eachOf: function() {
     var captures;
-    if ((captures = /^(?:each|for) (.*?) of *([^\n]+)/.exec(this.input))) {
+    if ((captures = /^for (.*?) of *([^\n]+)/.exec(this.input))) {
       this.consume(captures[0].length);
       var tok = this.tok('eachOf', captures[1]);
       tok.value = captures[1];
@@ -1112,7 +1111,7 @@ Lexer.prototype = {
       return true;
     }
     if (
-      (captures = /^- *(?:each|for) +([a-zA-Z_$][\w$]*)(?: *, *([a-zA-Z_$][\w$]*))? +of +([^\n]+)/.exec(
+      (captures = /^- *for +([a-zA-Z_$][\w$]*)(?: *, *([a-zA-Z_$][\w$]*))? +of +([^\n]+)/.exec(
         this.input
       ))
     ) {

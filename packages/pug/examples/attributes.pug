@@ -12,7 +12,7 @@
     </form>
   </div>
 
-div#id.left.container(class='user user-' + `${name || ''}` )
+div.left.container(class='user user-' + `${name || ''}` )
   h1.title= name
   form
     //- unbuffered comment :)
@@ -20,3 +20,16 @@ div#id.left.container(class='user user-' + `${name || ''}` )
     input(type='text' name='user[name]' value=name)
     input(checked, type='checkbox', name='user[blocked]')
     input(type='submit', value='Update')
+-
+  function er() {
+    return '<div>ddddd</div>'
+  }
+
+
+
+function fff(p)
+  - let dataArr = {a: '1', b: '2'}
+  div= p + 'sdsd'
+  for item, key in dataArr
+    div= item + ' ' + key
++fff(er())

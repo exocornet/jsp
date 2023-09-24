@@ -20,7 +20,7 @@ if users
 - var user = { name: 'tobi', age: 10 }
 
 ul
-  each val, key in user
+  for val, key in user
     li #{key}: #{val}
   else
     li user has no details!
@@ -28,7 +28,7 @@ ul
 - var user = {}
 
 ul
-  each prop, key in user
+  for prop, key in user
     li #{key}: #{val}
   else
     li user has no details!
@@ -37,16 +37,16 @@ ul
 - user.name = 'tobi'
 
 ul
-  each val, key in user
+  for val, key in user
     li #{key}: #{val}
   else
     li user has no details!
 
 - var ofKeyword = [{ name: 'tobi', friends: ['loki'] }, { name: 'loki' }]
 ul
-  each val of ofKeyword
+  for val of ofKeyword
     li= user.name
 
 ul
-  each val of ["variable with of keyword"]
+  for val of ["variable with of keyword"]
     li= val

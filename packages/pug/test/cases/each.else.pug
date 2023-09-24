@@ -20,7 +20,7 @@ if users
 - var user = { name: 'tobi', age: 10 }
 
 ul
-  each val, key in user
+  for val, key in user
     li #{key}: #{val}
   else
     li user has no details!
@@ -28,7 +28,7 @@ ul
 - var user = {}
 
 ul
-  each prop, key in user
+  for prop, key in user
     li #{key}: #{val}
   else
     li user has no details!
@@ -37,7 +37,7 @@ ul
 - user.name = 'tobi'
 
 ul
-  each val, key in user
+  for val, key in user
     li #{key}: #{val}
   else
     li user has no details!

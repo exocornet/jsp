@@ -1,0 +1,4 @@
+ul#users
+  for user, name in users
+    - console.log(name)
+    li(class='user-' + name) #{name} #{user.email}

@@ -52,7 +52,7 @@ html\n\
   body\n\
     h1 #{title}\n\
     ul#menu\n\
-      - each link in links\r\n\
+      - for link in links\r\n\
         li: a(href="#")= link\r\n\
 ';
 
@@ -63,7 +63,7 @@ html\n\
   body\n\
     h1 #{self.title}\n\
     ul#menu\n\
-      - each link in self.links\r\n\
+      - for link in self.links\r\n\
         li: a(href="#")= link\r\n\
 ';
   }
